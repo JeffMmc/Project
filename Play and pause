@@ -1,0 +1,23 @@
+/Play and pause
+        JButton pauseButton = new JButton("Pause");
+        pauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	if(forwardTimer.isRunning()){
+            		forwardTimer.stop();
+            	}else if(backwardTimer.isRunning()){
+            		backwardTimer.stop();
+            	}
+            	mediaPlayerComponent.getMediaPlayer().mute(false);
+            	
+            	if (pauseButton.getText().equals("Pause")){
+            		pauseButton.setText("Resume");
+            		mediaPlayerComponent.getMediaPlayer().pause();
+            	}else if(pauseButton.getText().equals("Resume")){
+            		pauseButton.setText("Pause");
+            		mediaPlayerComponent.getMediaPlayer().play();
+            	}
+            	
+            }
+        });
+        controlsPane.add(pauseButton);
