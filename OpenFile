@@ -1,0 +1,21 @@
+//Open file
+        JButton  openButton = new JButton("Open");
+
+        openButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	File selectedFile = null;
+            	fileSelector.setSelectedFile(null);
+            	fileSelector.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        		fileSelector.showSaveDialog(null);
+        		selectedFile = fileSelector.getSelectedFile();
+        		mediaPlayerComponent.getMediaPlayer().mute(false);
+        		if (selectedFile.exists() ){
+        			videoFile = selectedFile;
+        			mediapath = videoFile.getAbsolutePath();
+        			mediaPlayerComponent.getMediaPlayer().playMedia(mediapath);
+        		}
+            	mediaPlayerComponent.getMediaPlayer().mute(false);
+            }
+        });
+        controlsPane.add(openButton);
